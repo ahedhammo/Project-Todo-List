@@ -26,7 +26,10 @@ class TaskBoard {
   }
   removeTasks(task) {
     const taskId = task.getId()
-    return taskId
+    const index = this.#tasks.findIndex(item => item.id === taskId);
+    if (index !== -1) {
+      this.#tasks.splice(index, 1);
+    }
   }
   getTasks() {
     return this.#tasks
@@ -41,10 +44,14 @@ class TaskBoard {
 
 const board = new TaskBoard()
 const code = new Task("code", 1)
-const code2 = new Task("code", 2)
+const code2 = new Task("code2", 2)
+
+
 
 board.addTask(code)
 board.addTask(code2)
+board.removeTasks(code)
+
 
 console.log(board.checkDuplicateNames())
 console.table(board.getTasks())
