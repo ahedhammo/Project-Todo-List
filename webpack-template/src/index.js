@@ -1,80 +1,8 @@
 import { format, isToday, isPast, formatDistanceToNow } from 'date-fns'
+import ProjectsManager from './projectsManager.js'
+import Project from './project.js'
+import Task from './task.js'
 
-class Task {
-  constructor(name, priority, description, dueDate, completed, id) {
-    this.name = name
-    this.priority = priority
-    this.description = description
-    this.dueDate = dueDate
-    this.completed = false
-    this.id = crypto.randomUUID()
-  }
-
-  toggleCompleted() {
-    this.completed = !this.completed
-  }
-
-  getId() {
-    return this.id
-  }
-}
-
-class Project {
-  #tasks = []
-  constructor(name, id) {
-    this.name = name
-    this.id = crypto.randomUUID()
-  }
-  addTask(task) {
-    const taskName = task.name
-    if (!this.checkDuplicateNames(taskName  )) {
-      this.#tasks.push(task)
-    }
-  }
-  removeTask(task) {
-    const taskId = task.getId()
-    const index = this.#tasks.findIndex(item => item.id === taskId);
-    if (index !== -1) {
-      this.#tasks.splice(index, 1);
-    }
-  }
-  getTasks() {
-    return this.#tasks
-  }
-  checkDuplicateNames(task) {
-    const taskNameValue = this.#tasks.map(task => task.name);
-    return taskNameValue.includes(task)
-  }
-}
-
-class ProjectsManager {
-  #projects = []
-
-  createProject(project) {
-    const projectName = project.name
-    if (!this.checkDuplicateNames(projectName)) {
-      this.#projects.push(project)
-    }
-  }
-  checkDuplicateNames(project) {
-    const projectNameValue = this.#projects.map(project => project.name);
-    return projectNameValue.includes(project)
-  }
-
-  addTaskToProject(projectName, task) {
-    const projectId = projectName.id
-    const project = this.#projects.find(p => p.id === projectId)
-    project.addTask(task)
-  }
-
-  getProjectById(project) {
-   const projectId = project.id
-   return this.#projects.find(p => p.id === projectId)
-  }
-  getAllProjects() {
-    return this.#projects
-  }
-}
 
 const projectBoard = new ProjectsManager()
 
