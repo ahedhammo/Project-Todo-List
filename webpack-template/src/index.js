@@ -1,9 +1,10 @@
 
 class Task {
-  constructor(name, priority, description, completed, id) {
+  constructor(name, priority, description, project, completed, id) {
     this.name = name
     this.priority = priority
     this.description = description
+    this.project = project
     this.completed = false
     this.id = crypto.randomUUID()
   }
@@ -17,8 +18,12 @@ class Task {
   }
 }
 
-class TaskBoard {
+class Project {
   #tasks = []
+  constructor(name, id) {
+    this.name = name
+    this.id = crypto.randomUUID()
+  }
   addTask(task) {
     const taskName = task.name
     if (!this.checkDuplicateNames(taskName  )) {
@@ -41,16 +46,53 @@ class TaskBoard {
   }
 }
 
-const board = new TaskBoard()
-const code = new Task("code", 1, "hi")
-const code2 = new Task("code", 2, "hi")
+class ProjectsManager {
+  #projects = []
+
+  createProject(project) {
+    const projectName = project.name
+    if (!this.checkDuplicateNames(projectName)) {
+      this.#projects.push(project)
+    }
+  }
+  checkDuplicateNames(project) {
+    const projectNameValue = this.#projects.map(project => project.name);
+    return projectNameValue.includes(project)
+  }
+
+  addTaskToProject(projectName, task) {
+    const projectId = projectName.id
+    const project = this.#projects.find(p => p.id === projectId)
+    project.addTask(task)
+  }
+
+  getProjectById(project) {
+   const projectId = project.id
+   return this.#projects.find(p => p.id === projectId)
+  }
+  getAllProjects() {
+    return this.#projects
+  }
+}
+
+const projectBoard = new ProjectsManager()
+
+const code1 = new Task("code1", 1,)
+const code2 = new Task("code2", 2,)
+const code3 = new Task("code3", 3,)
+
+const project1 = new Project("Project1")
+const project2 = new Project("Project2")
 
 
 
+projectBoard.createProject(project1)
+projectBoard.createProject(project2)
 
-board.addTask(code)
-board.addTask(code2)
-board.removeTask(code2)
+projectBoard.addTaskToProject(project1, code1)
+projectBoard.addTaskToProject(project2, code2)
 
 
-console.table(board.getTasks())
+
+console.table(project1.getTasks())
+console.table(projectBoard.getAllProjects())
