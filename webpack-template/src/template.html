@@ -4,61 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do APP</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <aside>
-        <div class="user-wrapper">
-            <div class="user-icon"></div>
-            <div class="user-name">3Hed</div>
-        </div>
-        <div class="projects-container">
-            <h3>ToDay</h3>
-            <div class="projects-list">
-                <h3>My Projects</h3>
-                <p>Personal</p>
-                <p>Work</p>
-                <p>Life</p>
+    <div class="container">
+        <header>
+    <div class="name-wrapper">
+        <h3>Hello ahed,</h3>
+        <p>You have work today</p>
+    </div>
+    <div class="projects-container">
+        <div class="today project">
+            <div class="icon">HH</div>
+            <div class="project-text-wrapper">
+                <p>today</p>
+                <p>6</p>
             </div>
         </div>
-    </aside>
-    <header>
-        <h2>All My Tasks</h2>
-        <div class="sort-icon">icon</div>
-    </header>
-    <main>
-        <div class="tasks-container">
-            <div class="tasks-wrapper">
-                <h3 class="project-name">ToDay</h3>
-                <div class="tasks">
-                    <p>Do Laundrey</p>
-                    <p>Clean</p>
-                    <p>Call back</p>
-                </div>
-                <div>
-                    <button class="add-tasks-btn">Add Task</button>
-                </div>
+        <div class="schduled project">
+            <div class="icon">HH</div>
+            <div class="project-text-wrapper">
+                <p>schduled</p>
+                <p>3</p>
             </div>
         </div>
-        <div class="tasks-editor-container">
-            <div class="editor-header">
-                <div class="complete-btn-wrapper">
-                    <button class="complete-btn">Mark as complete</button>
-                </div>
-                <h1 task-editor-name>Task name</h1>
-                <div class="editor-btns-wrapper">
-                    <button class="reminder-btn">Remind me</button>
-                    <button project-btn>Personal</button>
-                    <button class="description-btn">Add description</button>
-                </div>
-                <div class="notes-menu">
-                    <h3>NOTES</h3>
-                    <button class="add-note-btn">Add note</button>
-                </div>
-                <div class="delete-btn-container">
-                    <button class="delete-btn">Delete</button>
-                </div>
+        <div class="all project">
+            <div class="icon">HH</div>
+            <div class="project-text-wrapper">
+                <p>All</p>
+                <p>12</p>
             </div>
         </div>
-    </main>
+        <div class="add project">
+            <div class="icon">HH</div>
+        </div>
+    </div>
+   </header>
+   <main>
+    <div class="tasks-container">
+            <h3>Today's Tasks</h3>
+            <div class="task-wrapper">
+                <ul class="tasks">
+                    <span class="task-checkbox uncompleted">icon</span>
+                    <li tasks-name>Code for 4H</li>
+                </ul>
+            </div>
+    </div>
+    <div class="add-tasks-btn-wrapper">
+        <button class="add-tasks-btn">+</button>
+    </div>
+   </main>
+    </div>
 </body>
 </html>
